@@ -77,9 +77,9 @@ class SessionFragment : BottomNavigationFragment<FragmentSessionBinding>() {
     override fun initObserveViewModel() {
         super.initObserveViewModel()
 
-        homeViewModel.sessionListLiveData.observe(this, EventObserver {
+       /* homeViewModel.sessionListLiveData.observe(this, EventObserver {
             sessionAdapter.submitList(it)
-        })
+        })*/
         homeViewModel.progressLiveData.observe(this, EventObserver {
             binding.progressBar.visibleOrGone(it, true)
 

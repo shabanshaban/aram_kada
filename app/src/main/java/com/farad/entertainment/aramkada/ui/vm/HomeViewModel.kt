@@ -21,7 +21,7 @@ import kotlinx.coroutines.launch
 class HomeViewModel(private val homeRepository: HomeRepository) : BaseViewModel() {
 
 
-    //Categories
+   /* //Categories
     private val _categoriesDataLiveData = MutableLiveData<List<CategoryModel>>()
     private val categoriesDataLiveData: LiveData<List<CategoryModel>> = _categoriesDataLiveData
 
@@ -36,7 +36,7 @@ class HomeViewModel(private val homeRepository: HomeRepository) : BaseViewModel(
     val sessionListLiveData: LiveData<Event<List<SessionModel>>> = _sessionListLiveData
 
     val combinePeriodLiveData = combineLiveData(categoriesDataLiveData, categoryItemListLiveData)
-
+*/
     private val _combinedCategoryData = MutableStateFlow<Pair<List<CategoryModel>, List<CategoryItemModel>>>(Pair(arrayListOf(), arrayListOf()))
     val combinedCategoryData: StateFlow<Pair<List<CategoryModel>, List<CategoryItemModel>>> = _combinedCategoryData
 
@@ -83,9 +83,22 @@ class HomeViewModel(private val homeRepository: HomeRepository) : BaseViewModel(
 
         }
     }
+    fun getSessionListFlow(itemId: Long): Flow<List<SessionModel>> {
 
+        return flow {
 
-    fun getCategoryList() {
+            try {
+                homeRepository.getSessionList(itemId).body()?.let { emit(it) }
+            } catch (e: Exception) {
+                _progressLiveData.postValue(Event(false))
+
+            }
+
+        }
+
+    }
+
+    /*fun getCategoryList() {
 
 
         callSafeApi(requestMethod = {
@@ -136,21 +149,8 @@ class HomeViewModel(private val homeRepository: HomeRepository) : BaseViewModel(
         }, onError = {
 
         })
-    }
+    }*/
 
-      fun getSessionListFlow(itemId: Long): Flow<List<SessionModel>> {
 
-        return flow {
-
-            try {
-                homeRepository.getSessionList(itemId).body()?.let { emit(it) }
-            } catch (e: Exception) {
-                _progressLiveData.postValue(Event(false))
-
-            }
-
-        }
-
-    }
 
 }

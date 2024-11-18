@@ -117,7 +117,7 @@ class HomeFragment : BottomNavigationFragment<FragmentHomeBinding>() {
 
         }
 
-        homeViewModel.combinePeriodLiveData.observe(this) { pair ->
+       /* homeViewModel.combinePeriodLiveData.observe(this) { pair ->
 
             //   listCategory.clear()
             //   listCategoryItemModel.clear()
@@ -130,7 +130,7 @@ class HomeFragment : BottomNavigationFragment<FragmentHomeBinding>() {
             }
             categoryAdapter.submitList(listCategory)
             categoryItemAdapter.submitList(listCategoryItemModel)
-        }
+        }*/
 
 
         homeViewModel.progressLiveData.observe(this, EventObserver {

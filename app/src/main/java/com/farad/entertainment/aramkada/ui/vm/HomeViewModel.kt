@@ -37,6 +37,8 @@ class HomeViewModel(private val homeRepository: HomeRepository) : BaseViewModel(
 
     val combinePeriodLiveData = combineLiveData(categoriesDataLiveData, categoryItemListLiveData)
 
+    private val _combinedCategoryData = MutableStateFlow<Pair<List<CategoryModel>, List<CategoryItemModel>>>(Pair(arrayListOf(), arrayListOf()))
+    val combinedCategoryData: StateFlow<Pair<List<CategoryModel>, List<CategoryItemModel>>> = _combinedCategoryData
 
     private val listCategory = getCategoryFlow()
 
@@ -66,15 +68,7 @@ class HomeViewModel(private val homeRepository: HomeRepository) : BaseViewModel(
     }
 
 
-    private val _combinedCategoryData =
-        MutableStateFlow<Pair<List<CategoryModel>, List<CategoryItemModel>>>(
-            Pair(
-                arrayListOf(),
-                arrayListOf()
-            )
-        )
-    val combinedCategoryData: StateFlow<Pair<List<CategoryModel>, List<CategoryItemModel>>> =
-        _combinedCategoryData
+
 
 
     fun fetchCombinedCategoryData(id: Long = 1) {

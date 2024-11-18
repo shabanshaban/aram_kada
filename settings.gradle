@@ -1,0 +1,37 @@
+pluginManagement {
+    repositories {
+        google {
+            content {
+                includeGroupByRegex("com\\.android.*")
+                includeGroupByRegex("com\\.google.*")
+                includeGroupByRegex("androidx.*")
+            }
+        }
+        mavenCentral()
+        gradlePluginPortal()
+        maven { url 'https://dl.google.com/android/maven2' }
+        maven { url 'https://maven.google.com/' }
+        gradlePluginPortal()
+        google()
+        jcenter()
+        maven { url 'https://www.jitpack.io' }
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        mavenCentral()
+        gradlePluginPortal()
+        maven { url 'https://dl.google.com/android/maven2' }
+        maven { url 'https://maven.google.com/' }
+        gradlePluginPortal()
+        google()
+        jcenter()
+        maven { url 'https://www.jitpack.io' }
+        mavenCentral()
+    }
+}
+
+rootProject.name = "aramkada"
+include ':app'

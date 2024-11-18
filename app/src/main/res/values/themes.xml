@@ -1,0 +1,34 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Aramkada" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m"> true</item>
+        <item name="fontFamily">@font/iransans</item>
+    </style>
+
+    <style name="Theme.Aramkada" parent="Base.Theme.Aramkada" />
+
+
+    <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">#0030CC8D</item>
+        <item name="itemRippleColor">@color/colorActive</item>
+        <item name="simpleItemSelectedRippleColor">@color/colorActive</item>
+    </style>
+
+    <style name="bottomNavigationActive">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="bottomNavigationInActive">
+
+        <item name="android:textSize">13sp</item>
+    </style>
+    <style name="RoundedImageView_8dp" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+    <style name="RoundedImageView_12dp" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+</resources>

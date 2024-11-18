@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">aramkada</string>
+    <string name="meditation">مدیتیشن</string>
+    <string name="music">موزیک</string>
+    <string name="breathing">تنفس</string>
+    <string name="video">ویدیو</string>
+    <string name="home">خانه</string>
+    <string name="sessions_s">%s جلسه</string>
+    <string name="minute_s">%s دقیقه</string>
+</resources>

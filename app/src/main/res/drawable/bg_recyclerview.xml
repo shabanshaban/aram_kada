@@ -1,0 +1,16 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- پس‌زمینه سفید -->
+    <item>
+        <shape>
+            <solid android:color="@color/white" />
+            <corners
+                android:topLeftRadius="24dp"
+                android:topRightRadius="24dp" />
+
+        </shape>
+    </item>
+
+    <!-- استروک فقط در لبه‌های بالا -->
+
+</layer-list>

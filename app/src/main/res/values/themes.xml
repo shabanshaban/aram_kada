@@ -3,6 +3,7 @@
     <style name="Base.Theme.Aramkada" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:statusBarColor">@color/white</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m"> true</item>
+        <item name="android:forceDarkAllowed" tools:ignore="NewApi">false</item>
         <item name="fontFamily">@font/iransans</item>
     </style>
 

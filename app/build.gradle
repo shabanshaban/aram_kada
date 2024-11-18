@@ -66,7 +66,7 @@ dependencies {
     implementation libs.androidx.preference.ktx
     implementation libs.androidx.lifecycle.viewmodel.ktx
 
-    implementation platform("com.squareup.okhttp3:okhttp-bom:5.0.0-alpha.10")
+    implementation platform("com.squareup.okhttp3:okhttp-bom:4.9.1")
     implementation "com.squareup.okhttp3:okhttp"
     implementation "com.squareup.okhttp3:logging-interceptor"
     implementation libs.converter.moshi

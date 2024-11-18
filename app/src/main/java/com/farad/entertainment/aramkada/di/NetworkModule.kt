@@ -29,7 +29,6 @@ val networkModule = module {
         val cache = Cache(androidApplication().cacheDir, cacheSize)
         val okhttpBuilder = OkHttpClient.Builder()
         okhttpBuilder
-            .fastFallback(true)
             .cache(cache)
             .connectTimeout(10, TimeUnit.SECONDS)
             .readTimeout(10, TimeUnit.SECONDS)

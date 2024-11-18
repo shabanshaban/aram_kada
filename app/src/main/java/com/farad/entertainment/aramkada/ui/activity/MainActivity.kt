@@ -39,6 +39,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainNavigator {
         delegate.localNightMode = AppCompatDelegate.MODE_NIGHT_NO
 
 
+
     }
 
     override fun onDestroy() {

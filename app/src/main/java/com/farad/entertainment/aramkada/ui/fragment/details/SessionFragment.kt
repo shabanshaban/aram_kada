@@ -2,6 +2,7 @@ package com.farad.entertainment.aramkada.ui.fragment.details
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.farad.entertainment.aramkada.base.BottomNavigationFragment
 import com.farad.entertainment.aramkada.databinding.FragmentSessionBinding
@@ -9,8 +10,13 @@ import com.farad.entertainment.aramkada.ui.fragment.details.adapter.SessionAdapt
 import com.farad.entertainment.aramkada.ui.vm.HomeViewModel
 import com.farad.entertainment.aramkada.utils.EventObserver
 import com.farad.entertainment.aramkada.utils.checkStateScrollL
+import com.farad.entertainment.aramkada.utils.gone
 import com.farad.entertainment.aramkada.utils.loadImage
+import com.farad.entertainment.aramkada.utils.visible
 import com.farad.entertainment.aramkada.utils.visibleOrGone
+import kotlinx.coroutines.flow.onCompletion
+import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.math.abs
 
@@ -50,7 +56,19 @@ class SessionFragment : BottomNavigationFragment<FragmentSessionBinding>() {
     private fun getData() {
         arg.item.apply {
 
-            homeViewModel.getSessionList(arg.item.id.toLong())
+            lifecycleScope.launch {
+                homeViewModel.getSessionListFlow(arg.item.id.toLong())
+                    .onStart {
+                        binding.progressBar.visible (false)
+                    }
+                    .onCompletion {
+                        binding.progressBar.gone (true)
+                    }
+                    .collect{
+                        sessionAdapter.submitList(it)
+                }
+            }
+
             binding.imageItem.loadImage(image2)
             binding.tvTitle.text = title
         }
@@ -63,8 +81,8 @@ class SessionFragment : BottomNavigationFragment<FragmentSessionBinding>() {
             sessionAdapter.submitList(it)
         })
         homeViewModel.progressLiveData.observe(this, EventObserver {
-
             binding.progressBar.visibleOrGone(it, true)
+
         })
 
     }

@@ -1,6 +1,5 @@
 package com.farad.entertainment.aramkada.ui.vm
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -60,7 +59,6 @@ class HomeViewModel(private val homeRepository: HomeRepository) : BaseViewModel(
                 homeRepository.getCategoryList().body()?.let { emit(it) }
             } catch (e: Exception) {
                 _progressLiveData.postValue(Event(false))
-                Log.e("shaban", "@getCategoryList: Exception")
             }
 
         }
@@ -146,5 +144,19 @@ class HomeViewModel(private val homeRepository: HomeRepository) : BaseViewModel(
         })
     }
 
+      fun getSessionListFlow(itemId: Long): Flow<List<SessionModel>> {
+
+        return flow {
+
+            try {
+                homeRepository.getSessionList(itemId).body()?.let { emit(it) }
+            } catch (e: Exception) {
+                _progressLiveData.postValue(Event(false))
+
+            }
+
+        }
+
+    }
 
 }
